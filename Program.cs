@@ -15,7 +15,7 @@ do
 	Konzol.messze("║      messze (50)     ║");
 	Konzol.kozelebb("║     kozelebb (25)    ║");
 	Konzol.kozel("║      kozel (15)      ║");
-	Konzol.nagyonkozel("║   nagyonkozel (<15)  ║");
+	Konzol.nagyonkozel("║   nagyonkozel (<10)  ║");
 	Konzol.megvan("║        megvan        ║");
 	Console.ForegroundColor = ConsoleColor.Green;
 	Console.WriteLine("      ╚══════════════════════╝      ");
@@ -26,7 +26,6 @@ do
 	Console.Write("Első Tipp:");
 	int tipp = int.Parse(Console.ReadLine());
 	int szamlalo = 1;
-	Console.WriteLine("-------------Következő tipp-------------\n\n\n\n");
 
 	if (tipp == szam)
 		Konzol.megvan($"Gratulálunk elsőre kitaláltad ez inkább szerencse mint tudás!! A szamod: {szam}");
@@ -52,7 +51,7 @@ do
 			else if (kozelseg > 25)
 				Konzol.kozelebb($"(Melegszik!) ═══ {tobbkevesebb} ═══");
 
-			else if (kozelseg > 15)
+			else if (kozelseg > 10)
 				Konzol.kozel($"(Ez már elég közel van) ═══ {tobbkevesebb} ═══");
 
 			else
@@ -64,10 +63,11 @@ do
 		else
 			Konzol.hiba("Hiba: A számod nem lehet 0-nál kisebb vagy 100-nál nagyobb");
 
+		Console.WriteLine("-------------Következő tipp-------------\n\n\n\n");
 		Console.Write("Tipp:");
 		tipp = int.Parse(Console.ReadLine());
 		szamlalo += 1;
-		Console.WriteLine("-------------Következő tipp-------------\n\n\n\n");
+		
 	} while (tipp != szam);
 
 	Konzol.megvan($"         Gratulálunk!!! Kitaláltad a számod: {szam}           tippeléseid száma: {szamlalo}         ");
@@ -81,13 +81,15 @@ do
 	{
 		case 'I':
 			meg=true;
+			Console.Clear();
 			break;
 
 		default:
 			meg=false;
+			
 			break;
 	}
-	Console.Clear();
+	
 
 	if (szamlalo > max)
 		max=szamlalo;
